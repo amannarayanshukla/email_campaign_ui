@@ -53,7 +53,7 @@ export default class Dashboard extends Component{
                         </div>
                         :
                         <div>
-                            {`no data`}
+                            {`Nothing to show now. Please come back later`}
                         </div>
                 }
             </div>
