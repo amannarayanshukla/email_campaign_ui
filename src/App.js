@@ -15,7 +15,7 @@ const { TabPane } = Tabs;
 
 const props = {
     name: 'file',
-    action: `http://localhost:9999/data/aman`,
+    action: `http://139.59.39.11:9999/data/aman`,
 };
 
 const forMap = tag => {
@@ -94,7 +94,7 @@ export default class App extends Component{
                 redirect: 'follow'
             };
         //
-            fetch(`http://localhost:9999/verify`, requestOptions)
+            fetch(`http://139.59.39.11:9999/verify`, requestOptions)
                 .then(response => {
                     console.log(response,"RESPONSE");
                     if(response.status > 300){
@@ -246,7 +246,7 @@ export default class App extends Component{
         };
         console.log(this.state, "THIS STATE")
         let id = this.state.id || localStorage.getItem('id')
-        fetch(`http://localhost:9999/create-campaign/${id}`, requestOptions)
+        fetch(`http://139.59.39.11:9999/create-campaign/${id}`, requestOptions)
             .then(response => response.text())
             .then(result => {
                 message.success(`Process completed`);
@@ -275,7 +275,7 @@ export default class App extends Component{
             redirect: 'follow'
         };
 
-        fetch("http://localhost:9999/user/logout", requestOptions)
+        fetch("http://139.59.39.11:9999/user/logout", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({
@@ -328,7 +328,7 @@ export default class App extends Component{
                 redirect: 'follow'
             };
 
-            fetch("http://localhost:9999/user/login", requestOptions)
+            fetch("http://139.59.39.11:9999/user/login", requestOptions)
                 .then(response => {
                     console.log(response,"RESPONSE");
                     if(response.status > 300){
