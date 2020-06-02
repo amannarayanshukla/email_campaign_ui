@@ -264,7 +264,6 @@ export default class App extends Component{
     logout = () => {
 
         const myHeaders = new Headers();
-        // myHeaders.append("Authorization", "Bearer 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");
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
