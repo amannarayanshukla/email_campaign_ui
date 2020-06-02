@@ -27,7 +27,17 @@
 .App-link {
   color: #61dafb;
 }
-
+/*.addCardButton {*/
+/*  height: auto;*/
+/*  min-height: 220px;*/
+/*  -webkit-flex: 1;*/
+/*  flex: 1;*/
+/*  width: 202px;*/
+/*  min-width: 202px;*/
+/*  max-width: 200px;*/
+/*  float: left;*/
+/*  margin: 0 10px 10px 0;*/
+/*}*/
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
