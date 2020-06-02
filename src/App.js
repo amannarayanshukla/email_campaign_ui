@@ -3,6 +3,7 @@ import {Tabs, Button, Input, Layout, message, Steps, Tag, Upload,Form} from 'ant
 import {PlusOutlined, UploadOutlined} from '@ant-design/icons';
 
 import EmailModal from './emailModal';
+import Dashboard from "./dashboard";
 
 import "antd/dist/antd.css";
 import './App.css';
@@ -72,7 +73,9 @@ export default class App extends Component{
         uuid : ``,
         accessToken: ``,
         refreshToken: ``,
-        id:``
+        id:``,
+        defaultTab : 1,
+        isDisabled: false,
     };
 
     componentDidMount() {
@@ -250,6 +253,7 @@ export default class App extends Component{
             .then(response => response.text())
             .then(result => {
                 message.success(`Process completed`);
+                this.setState({defaultTab: 1,isDisabled:true});
             })
             .catch(error => {
                 console.log('error', error)
@@ -265,7 +269,7 @@ export default class App extends Component{
 
         const raw = JSON.stringify({
             uuid: this.state.uuid,
-            accessToken: this.state.accessToken,
+            accessToken: localStorage.getItem('accessToken'),
         });
 
         const requestOptions = {
@@ -534,20 +538,23 @@ export default class App extends Component{
                 </Layout>
              :
                 <Tabs
-                    defaultActiveKey="1"
+                    defaultActiveKey={this.state.defaultTab}
                     onChange={callback}
                     style={{width:"70%", margin:"10px auto"}}
                     tabBarExtraContent={operations}
                 >
                     <TabPane tab="Insights" key="1">
-                        {
-
-                        }
+                        <Dashboard/>
                     </TabPane>
                     <TabPane tab="Email Campaign" key="2">
-                        <Layout style={{width: "70%", margin:"10px auto"}}>
-                            <Header style={{background:"#fafafa"}}><h4>{`Email Marketing Campaign`}</h4></Header>
-                            <div>
+                        <Layout style={{
+                            width: "100%",
+                            margin:"10px auto"
+                        }}>
+                            <Header style={{background:"#fafafa", textAlign: "center"}}><h4>{`Email Marketing Campaign`}</h4></Header>
+                            <div style={{
+                                fontSize: "14px"
+                            }}>
                                 <Steps current={current}>
                                     {steps.map(item => (
                                         <Step
@@ -579,6 +586,7 @@ export default class App extends Component{
                                             style={{
                                                 "margin":"10px"
                                             }}
+                                            disabled={this.state.isDisabled}
                                         >
                                             Done
                                         </Button>
